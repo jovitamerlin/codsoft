@@ -1,0 +1,196 @@
+function Login() { 
+const [email, setEmail] = useState(""); 
+const [password, setPassword] = useState(""); 
+const handleLogin = () => { 
+if (email && password) { 
+alert(`Logged in as ${email}`); 
+} else { 
+alert("Please fill in both fields."); 
+} 
+}; 
+return ( 
+<div className="flex flex-col items-center space-y-4"> 
+<input 
+type="email" 
+placeholder="Email" 
+className="p-2 border border-gray-300 rounded-md" 
+onChange={(e) => setEmail(e.target.value)} 
+/> 
+<input 
+type="password" 
+placeholder="Password" 
+className="p-2 border border-gray-300 rounded-md" 
+onChange={(e) => setPassword(e.target.value)} 
+34 
+/> 
+<button 
+onClick={handleLogin} 
+className="bg-blue-500 text-white p-2 rounded-md w-full" 
+> 
+Login 
+</button> 
+</div> 
+); 
+} 
+function RoomBooking() { 
+const [data, setData] = useState({ studentId: "", roomNo: "", date: "" }); 
+const handleChange = (e) => setData({ ...data, [e.target.name]: e.target.value }); 
+const handleSubmit = (e) => { 
+e.preventDefault(); 
+alert(`Room ${data.roomNo} booked for ${data.studentId} on ${data.date}`); 
+}; 
+return ( 
+<form onSubmit={handleSubmit} className="flex flex-col items-center 
+space-y-4"> 
+<input 
+name="studentId" 
+placeholder="Student ID" 
+className="p-2 border border-gray-300 rounded-md" 
+onChange={handleChange} 
+/> 
+<input 
+35 
+name="roomNo" 
+placeholder="Room Number" 
+className="p-2 border border-gray-300 rounded-md" 
+onChange={handleChange} 
+/> 
+<input 
+type="date" 
+name="date" 
+className="p-2 border border-gray-300 rounded-md" 
+onChange={handleChange} 
+/> 
+<button 
+type="submit" 
+className="bg-blue-500 text-white p-2 rounded-md w-full" 
+> 
+Book Room 
+</button> 
+</form> 
+); 
+} 
+function FeePayment() { 
+const [amount, setAmount] = useState(""); 
+const [status, setStatus] = useState(""); 
+const handlePayment = () => { 
+setStatus(`Payment of ₹${amount} is successful.`); 
+}; 
+return ( 
+36 
+<div className="flex flex-col items-center space-y-4"> 
+<input 
+type="number" 
+value={amount} 
+onChange={(e) => setAmount(e.target.value)} 
+placeholder="Enter amount" 
+className="p-2 border border-gray-300 rounded-md" 
+/> 
+<button 
+onClick={handlePayment} 
+className="bg-green-500 text-white p-2 rounded-md w-full" 
+> 
+Pay Now 
+</button> 
+<p>{status}</p> 
+</div> 
+); 
+} 
+function Chatbot() { 
+const [query, setQuery] = useState(""); 
+const [response, setResponse] = useState(""); 
+const handleSend = () => { 
+setResponse("Bot: This is a placeholder response. AI will respond based on 
+query."); 
+}; 
+return ( 
+<div className="flex flex-col items-center space-y-4"> 
+37 
+<input 
+value={query} 
+onChange={(e) => setQuery(e.target.value)} 
+placeholder="Ask something..." 
+className="p-2 border border-gray-300 rounded-md" 
+/> 
+<button 
+onClick={handleSend} 
+className="bg-blue-500 text-white p-2 rounded-md w-full" 
+> 
+Send 
+</button> 
+<p>{response}</p> 
+</div> 
+); 
+} 
+function Complaints() { 
+const [text, setText] = useState(""); 
+const [submitted, setSubmitted] = useState(false); 
+const handleSubmit = () => { 
+setSubmitted(true); 
+}; 
+return ( 
+<div className="flex flex-col items-center space-y-4"> 
+<textarea 
+onChange={(e) => setText(e.target.value)} 
+placeholder="Enter complaint..." 
+38 
+className="p-2 border border-gray-300 rounded-md" 
+/> 
+<button 
+onClick={handleSubmit} 
+className="bg-red-500 text-white p-2 rounded-md w-full" 
+> 
+Submit 
+</button> 
+{submitted && <p>Complaint submitted successfully!</p>} 
+</div> 
+); 
+} 
+function SecurityLog() { 
+const [visitor, setVisitor] = useState(""); 
+const logEntry = () => alert(`Visitor ${visitor} entry recorded at ${new 
+Date().toLocaleString()}`); 
+return ( 
+<div className="flex flex-col items-center space-y-4"> 
+<input 
+onChange={(e) => setVisitor(e.target.value)} 
+placeholder="Visitor Name" 
+className="p-2 border border-gray-300 rounded-md" 
+/> 
+<button 
+onClick={logEntry} 
+className="bg-yellow-500 text-white p-2 rounded-md w-full" 
+> 
+39 
+Log Entry 
+</button> 
+</div> 
+); 
+} 
+function Settings() { 
+const [darkMode, setDarkMode] = useState(false); 
+const [notifications, setNotifications] = useState(true); 
+return ( 
+<div className="flex flex-col items-center space-y-4"> 
+<label className="flex items-center space-x-2"> 
+Dark Mode 
+<input 
+type="checkbox" 
+checked={darkMode} 
+onChange={() => setDarkMode(!darkMode)} 
+className="form-checkbox" 
+/> 
+</label> 
+<label className="flex items-center space-x-2"> 
+Notifications 
+<input 
+type="checkbox" 
+checked={notifications} 
+onChange={() => setNotifications(!notifications)} 
+className="form-checkbox" 
+/> 
+</label> 
+40 
+</div> 
+); 
+}
